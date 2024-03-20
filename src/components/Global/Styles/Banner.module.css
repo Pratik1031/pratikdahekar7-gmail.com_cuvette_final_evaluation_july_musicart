@@ -1,0 +1,29 @@
+.container{
+    display: flex;
+    background:linear-gradient(90deg, #7286B4 0%, #E794CE 100%);
+    margin:  1rem 6rem;
+    position: fixed;
+    top: 9rem;
+    align-items: center;
+    justify-content:space-between;
+    padding-left: 0.5rem;
+    padding-right: 1rem;
+    max-height: 14rem;
+    border-radius: 30px;
+    
+}
+.Text{
+    font-family: Roboto;
+font-size: 69px;
+font-weight: 500;
+line-height: 80px;
+letter-spacing: 0em;
+text-align: left;
+color: #2E0052;
+margin: 3rem;
+
+}
+.girl_img{
+    height: 18rem;
+    margin-bottom: 4rem;
+}

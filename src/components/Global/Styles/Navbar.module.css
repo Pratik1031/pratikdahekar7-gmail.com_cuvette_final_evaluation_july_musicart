@@ -1,0 +1,43 @@
+.container{
+    display: flex;
+    background-color: #2E0052;
+    position: fixed;
+    top: 0px;
+    align-items: center;
+    justify-content:space-between;
+    padding-left: 0.5rem;
+    padding-right: 1rem;
+    width: 100vw;
+   
+}
+.container p{
+    font-family: Roboto;
+    font-size: 1rem;
+    font-weight: 500;
+    /* line-height: 10px; */
+    letter-spacing: 0em;
+    text-align: left;
+    color: #FFFFFF;
+    padding-right: 1.5rem;
+
+}
+
+/* :nth-child(3) {
+   
+
+} */
+.phone{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 1rem;
+}
+.phone img{
+height: 1.5rem;
+padding: 0.3rem;
+}
+/* 
+#shop{
+    position: relative;
+    /* left: -30rem; */
+

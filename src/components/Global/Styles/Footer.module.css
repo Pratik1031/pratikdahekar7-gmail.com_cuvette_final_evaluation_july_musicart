@@ -1,0 +1,19 @@
+.Footer{
+    display: flex;
+    background-color: #2E0052;
+    position: fixed;
+    bottom: 0px;
+    align-items: center;
+    justify-content: center;
+    padding: 0.3rem;
+    width: 100vw;
+
+    font-family: Roboto;
+font-size: 26px;
+font-weight: 500;
+line-height: 31px;
+letter-spacing: 0em;
+text-align: left;
+color: #FFFFFF;
+
+}

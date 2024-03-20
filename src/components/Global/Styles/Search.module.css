@@ -1,0 +1,26 @@
+.container{
+    height: 3.5rem;
+    background-color: #FFFFFF;
+    border: 3px solid #C8C8C8;
+    border-radius: 48px;
+    /* width: 84vw; */
+    /* margin-top: 5rem; */
+    position:relative;
+    top: 6rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+.Search_input{
+    font-family: Roboto;
+font-size: 34px;
+font-weight: 400;
+line-height: 39px;
+letter-spacing: 0em;
+text-align: left;
+color: #666666;
+padding-right: 48vw;
+border: none;
+}

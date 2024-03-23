@@ -1,0 +1,52 @@
+.container {
+  display: flex;
+  background-color: #2e0052;
+  top: 0;
+  position: sticky;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 0.5rem;
+  padding-right: 1rem;
+  width: 100vw;
+}
+
+.container p {
+  font-family: Roboto;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #ffffff;
+  padding-right: 1.5rem;
+}
+
+.phone {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 1rem;
+}
+.phone img {
+  height: 1.5rem;
+  padding: 0.3rem;
+}
+
+.registerBtns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  color: #ffffff;
+  margin-right: 2rem;
+}
+
+.registerBtns span a:link {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* Apply styles to the visited link within the spans */
+.registerBtns span a:visited {
+  color: #ffffff;
+  text-decoration: none;
+}

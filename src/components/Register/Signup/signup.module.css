@@ -10,12 +10,11 @@
   margin: auto;
 }
 
-.logoo {
+.logo {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  margin-top: 2rem;
 }
 
 .logo_img {
@@ -24,7 +23,7 @@
 
 .heading {
   font-size: 2rem;
-  font-weight: 470;
+  font-weight: 400;
   line-height: 25px;
   letter-spacing: 0em;
   text-align: left;
@@ -35,12 +34,12 @@
   background-color: #ffffff;
   border: 0.1875rem solid #d9d9d9;
   border-radius: 1.45rem;
-  width: 30vw;
+  width: 25vw;
   display: flex;
+  margin-top: 0.5rem;
   flex-direction: column;
   padding-left: 2rem;
   padding-right: 1rem;
-  margin-top: 7rem;
 }
 
 .login {
@@ -48,46 +47,52 @@
   flex-direction: column;
   align-content: center;
   justify-content: center;
-  gap: 0.2rem;
-  padding: 1rem;
 }
 
-.login label {
-  font-size: 1.25rem;
+.login > label {
+  font-size: 1.2rem;
   font-weight: 500;
   line-height: 26px;
   letter-spacing: 0em;
-  margin-bottom: 0.25rem;
+  margin-top: 0.5rem;
 }
 
 .login input {
-  width: 25rem;
-  padding: 0.8rem;
-  height: 1.25rem;
+  width: 20rem;
+  padding: 0.5rem;
+  height: 1rem;
   border-radius: 0.6894rem;
   font-family: Open Sans;
   font-size: 19px;
+  margin-top: 0.25rem;
   font-weight: 400;
   letter-spacing: 0em;
   text-align: left;
   color: #828282;
   border: 1.38px solid #d0d0d0;
-  margin-bottom: 0.5rem;
 }
 
-.centered_text {
+.toggle {
   display: flex;
+  justify-content: center;
   align-items: center;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
+  gap: 0.5rem;
+  width: 23rem;
+  font-family: Roboto;
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 2rem;
+  text-align: left;
 }
 
-.line {
-  width: 14vw;
-  border: 1px solid #bdbdbd;
-}
-
-.text {
-  padding: 0 10px;
+.toggle > span {
+  font-family: Roboto;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 2rem;
+  text-align: left;
+  cursor: pointer;
 }
 
 .continue_btn {
@@ -98,26 +103,7 @@
   border-radius: 8px;
   border: none;
   text-align: center;
-  margin-top: 1rem;
-  width: 25rem;
+  margin-top: 0.2rem;
+  width: 22rem;
   cursor: pointer;
-}
-
-.btn {
-  width: 35vw;
-  background-color: #ffffff;
-  color: #000000;
-  padding: 0.5rem;
-  font-size: 1.2rem;
-  border-radius: 8px;
-  text-align: center;
-  margin-top: 2rem;
-  min-width: 15rem;
-  border: #828282 1px solid;
-  cursor: pointer;
-}
-
-.logoo {
-  position: fixed;
-  top: 0rem;
 }

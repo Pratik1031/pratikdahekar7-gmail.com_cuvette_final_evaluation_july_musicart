@@ -1,25 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Styles from './Styles/Main.module.css';
-import axios from 'axios';
 
-const Main = () => {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          'http://localhost:8080/api/v1/products/allProduct'
-        );
-        setProducts(response.data.data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
+const Main = ({ products }) => {
   return (
     <div className={Styles.container}>
       {Array.isArray(products) &&

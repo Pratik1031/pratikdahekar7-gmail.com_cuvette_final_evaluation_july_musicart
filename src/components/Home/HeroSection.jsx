@@ -1,11 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Styles from './Styles/hero.module.css';
 import grid from '../../assets/icons/grid.svg';
 import list from '../../assets/icons/list.svg';
 import axios from 'axios';
 
-const HeroSection = () => {
+const HeroSection = ({ setFilteredProducts }) => {
   const [products, setProducts] = useState([]);
+  const [selectedFilters, setSelectedFilters] = useState({
+    headphoneType: '',
+    company: '',
+    color: '',
+    price: '',
+  });
+  const [noProductFound, setNoProductFound] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,6 +28,39 @@ const HeroSection = () => {
 
     fetchData();
   }, []);
+
+  const applyFilters = useCallback(async () => {
+    try {
+      const response = await axios.post(
+        'http://localhost:8080/api/v1/products/filter',
+        selectedFilters
+      );
+      setFilteredProducts(response.data.data);
+    } catch (error) {
+      console.error('Error applying filters:', error);
+    }
+  }, [selectedFilters, setFilteredProducts]);
+
+  const handleFilterChange = (event) => {
+    const { name, value } = event.target;
+    setSelectedFilters((prevFilters) => ({
+      ...prevFilters,
+      [name]: value,
+    }));
+  };
+
+  const handleSortChange = (event) => {
+    const { value } = event.target;
+    setSelectedFilters((prevFilters) => ({
+      ...prevFilters,
+      sort_products: value,
+    }));
+  };
+
+  useEffect(() => {
+    applyFilters();
+  }, [selectedFilters]);
+
   return (
     <div className={Styles.container}>
       <div className={Styles.filters}>
@@ -31,17 +71,23 @@ const HeroSection = () => {
           </div>
           <div className={Styles.filterby}>
             <select
-              name='headphoneType'
-              id='headphoneType'
+              name='type'
+              id='type'
               className={Styles.filterBtn}
+              onChange={handleFilterChange}
             >
               <option value=''>Headphone Type</option>
               <option value='featured'>Features</option>
-              <option value='In-ear headphone'>In-ear headphone</option>
-              <option value='On-ear headphone'>On-ear headphone</option>
-              <option value='Over-ear headphone'>Over-ear headphone</option>
+              <option value='In-ear'>In-ear headphone</option>
+              <option value='On-ear'>On-ear headphone</option>
+              <option value='Over-ear'>Over-ear headphone</option>
             </select>
-            <select name='company' id='company' className={Styles.filterBtn}>
+            <select
+              name='brand'
+              id='brand'
+              className={Styles.filterBtn}
+              onChange={handleFilterChange}
+            >
               <option value=''>Company</option>
               <option value='Featured'>Featured</option>
               {Array.isArray(products) &&
@@ -49,20 +95,30 @@ const HeroSection = () => {
                   <option key={product.id}>{product.brand}</option>
                 ))}
             </select>
-            <select name='color' id='color' className={Styles.filterBtn}>
+            <select
+              name='color'
+              id='color'
+              className={Styles.filterBtn}
+              onChange={handleFilterChange}
+            >
               <option value=''>Colour</option>
               <option value='Featured'>Featured</option>
-              <option value='blue'>Blue</option>
-              <option value='black'>Black</option>
-              <option value='white'>White</option>
-              <option value='brown'>Brown</option>
+              {Array.isArray(products) &&
+                products.map((product) => (
+                  <option key={product.id}>{product.color}</option>
+                ))}
             </select>
-            <select name='price' id='price' className={Styles.filterBtn}>
+            <select
+              name='price'
+              id='price'
+              className={Styles.filterBtn}
+              onChange={handleFilterChange}
+            >
               <option value=''>Price</option>
               <option value='Featured'>Featured</option>
-              <option value=''>₹0 - ₹1,000</option>
-              <option value=''>₹1,000 - ₹10,000</option>
-              <option value=''>₹10,000 - ₹20,000</option>
+              <option value='0-100'>₹0 - ₹1,000</option>
+              <option value='100-200'>₹1,000 - ₹10,000</option>
+              <option value='200-1000'>₹10,000 - ₹20,000</option>
             </select>
           </div>
         </div>
@@ -71,6 +127,7 @@ const HeroSection = () => {
             name='sort_products'
             id='sort_products'
             className={Styles.SortBtn}
+            onChange={handleSortChange}
           >
             <option value='Featured'>Sort By : Featured</option>
             <option value='lowest'>Price: Lowest</option>
@@ -80,6 +137,7 @@ const HeroSection = () => {
           </select>
         </div>
       </div>
+      {noProductFound && <p>No product found.</p>}
     </div>
   );
 };

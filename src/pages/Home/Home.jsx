@@ -8,19 +8,35 @@ import Footer from '../../components/Home/Footer';
 import HeroSection from '../../components/Home/HeroSection';
 import { Link } from 'react-router-dom';
 import Main from '../../components/Home/Main';
+import axios from 'axios';
 
 const Home = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     const accessToken = localStorage.getItem('user');
-    // console.log('Access Token', accessToken);
-
     if (accessToken) {
       setIsLoggedIn(true);
     } else {
       setIsLoggedIn(false);
     }
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          'http://localhost:8080/api/v1/products/allProduct'
+        );
+        setProducts(response.data.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
   }, []);
 
   return (
@@ -39,8 +55,10 @@ const Home = () => {
       <div>
         <Banner />
         <Searchbar />
-        <HeroSection />
-        <Main />
+        <HeroSection setFilteredProducts={setFilteredProducts} />
+        <Main
+          products={filteredProducts.length > 0 ? filteredProducts : products}
+        />
       </div>
       <Footer />
     </div>

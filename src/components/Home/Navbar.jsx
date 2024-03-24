@@ -1,9 +1,21 @@
-import React from 'react';
-import { Link } from 'react-router-dom'; // Import Link from React Router
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Styles from './Styles/Navbar.module.css';
 import phone_logo from '../../assets/icons/phone.svg';
 
 function Navbar() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem('user');
+
+    if (accessToken) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, []);
+
   return (
     <div className={Styles.container}>
       <p className={Styles.phone}>
@@ -11,15 +23,19 @@ function Navbar() {
         9874563215
       </p>
       <p>Get 50% off on selected items | &nbsp; &nbsp; Shop Now</p>
-      <div className={Styles.registerBtns}>
-        <span>
-          <Link to='/register'>Login</Link>
-        </span>
-        |
-        <span>
-          <Link to='/register'>Signup</Link>
-        </span>
-      </div>
+      {isLoggedIn ? (
+        <p></p>
+      ) : (
+        <div className={Styles.registerBtns}>
+          <span>
+            <Link to='/register'>Login</Link>
+          </span>
+          |
+          <span>
+            <Link to='/register'>Signup</Link>
+          </span>
+        </div>
+      )}
     </div>
   );
 }

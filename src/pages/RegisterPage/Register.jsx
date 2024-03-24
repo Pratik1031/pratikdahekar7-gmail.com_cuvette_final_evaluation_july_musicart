@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Styles from './register.module.css';
 import Login from '../../components/Register/Login/Login';
-import Signup from '../../components/Register/Signup/Signup';
+import { Navigate } from 'react-router-dom';
 
 const Register = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem('user');
+
+    if (accessToken) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, []);
+
   return (
     <div className={Styles.container}>
-      <Login />
+      {isLoggedIn ? <Navigate to='/' /> : <Login />}
     </div>
   );
 };

@@ -4,6 +4,7 @@ import Styles from './signup.module.css';
 import Login from '../Login/Login';
 import logo from '../../../assets/icons/logo.svg';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
   const [active, setActive] = useState('signup');
@@ -11,6 +12,7 @@ const Signup = () => {
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [mobileNo, setMobileNo] = useState('');
+  const navigate = useNavigate('');
 
   const handleFormSwitch = () => {
     setActive(active === 'signup' ? 'login' : 'signup');
@@ -24,6 +26,7 @@ const Signup = () => {
         'http://localhost:8080/api/v1/users/signup',
         userData
       );
+      navigate('/');
       console.log('User Created Sucessfully', response);
     } catch (error) {
       console.error('Error Creating User', error);

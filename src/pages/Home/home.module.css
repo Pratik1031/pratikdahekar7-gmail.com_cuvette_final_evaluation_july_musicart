@@ -3,6 +3,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
 .logo {
@@ -12,4 +13,10 @@
   align-items: center;
   gap: 1.25rem;
   margin-left: 2rem;
+  cursor: pointer;
+}
+
+.logo a {
+  color: #000000;
+  text-decoration: none;
 }

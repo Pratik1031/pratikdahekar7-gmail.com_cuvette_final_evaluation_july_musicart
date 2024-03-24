@@ -1,9 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Styles from './Styles/hero.module.css';
 import grid from '../../assets/icons/grid.svg';
 import list from '../../assets/icons/list.svg';
+import axios from 'axios';
 
 const HeroSection = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          'http://localhost:8080/api/v1/products/allProduct'
+        );
+        setProducts(response.data.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <div className={Styles.container}>
       <div className={Styles.filters}>
@@ -27,18 +44,16 @@ const HeroSection = () => {
             <select name='company' id='company' className={Styles.filterBtn}>
               <option value=''>Company</option>
               <option value='Featured'>Featured</option>
-              <option value='JBL'>JBL</option>
-              <option value='Sony'>Sony</option>
-              <option value='Boat'>Boat</option>
-              <option value='Marshall'>Marshall</option>
-              <option value='Zebronics'>Zebronics</option>
-              <option value='Ptron'>Ptron</option>
+              {Array.isArray(products) &&
+                products.map((product) => (
+                  <option key={product.id}>{product.brand}</option>
+                ))}
             </select>
             <select name='color' id='color' className={Styles.filterBtn}>
               <option value=''>Colour</option>
               <option value='Featured'>Featured</option>
               <option value='blue'>Blue</option>
-              <option value='black'>black</option>
+              <option value='black'>Black</option>
               <option value='white'>White</option>
               <option value='brown'>Brown</option>
             </select>
@@ -57,9 +72,9 @@ const HeroSection = () => {
             id='sort_products'
             className={Styles.SortBtn}
           >
-            <option value='Featured'>Sort By :Featured</option>
-            <option value='lowest'>Price:Lowest</option>
-            <option value='highest'>Price:Highest</option>
+            <option value='Featured'>Sort By : Featured</option>
+            <option value='lowest'>Price: Lowest</option>
+            <option value='highest'>Price: Highest</option>
             <option value='atoz'>Name:(A-Z)</option>
             <option value='ztoa'>Name:(Z-A)</option>
           </select>

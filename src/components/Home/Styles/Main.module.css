@@ -1,0 +1,40 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  width: 85vw;
+  margin: auto;
+  padding: 0.05rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 100%;
+  max-width: 21.75rem;
+  height: 30rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card img {
+  width: 100%;
+  max-width: 15rem;
+  height: 15rem;
+  object-fit: cover;
+  border: 1rem #d4e5ff solid;
+}
+
+.details {
+  text-align: center;
+}
+
+p {
+  font-family: Roboto;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: left;
+  width: 16.5625rem;
+}

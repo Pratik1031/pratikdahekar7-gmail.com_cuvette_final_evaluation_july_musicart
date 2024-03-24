@@ -4,11 +4,13 @@ import Signup from '../Signup/Signup';
 import Footer from '../../Home/Footer';
 import axios from 'axios';
 import logo from '../../../assets/icons/logo.svg';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [active, setActive] = useState('login');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleFormSwitch = () => {
     setActive(active === 'login' ? 'signup' : 'login');
@@ -22,7 +24,10 @@ const Login = () => {
         'http://localhost:8080/api/v1/users/login',
         userData
       );
-      console.log(response);
+      const data = response.data;
+      localStorage.setItem('user', JSON.stringify(data.acess_token));
+      // console.log(response);
+      navigate('/');
     } catch (error) {
       console.error(error);
     }

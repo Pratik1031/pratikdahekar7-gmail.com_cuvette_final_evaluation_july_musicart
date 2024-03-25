@@ -7,7 +7,7 @@ const Register = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    const accessToken = localStorage.getItem('user');
+    const accessToken = localStorage.getItem('data');
 
     if (accessToken) {
       setIsLoggedIn(true);

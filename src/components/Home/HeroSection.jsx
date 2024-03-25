@@ -77,7 +77,7 @@ const HeroSection = ({ setFilteredProducts }) => {
               onChange={handleFilterChange}
             >
               <option value=''>Headphone Type</option>
-              <option value='featured'>Features</option>
+              <option value=''>Features</option>
               <option value='In-ear'>In-ear headphone</option>
               <option value='On-ear'>On-ear headphone</option>
               <option value='Over-ear'>Over-ear headphone</option>
@@ -89,7 +89,7 @@ const HeroSection = ({ setFilteredProducts }) => {
               onChange={handleFilterChange}
             >
               <option value=''>Company</option>
-              <option value='Featured'>Featured</option>
+              <option value=''>Featured</option>
               {Array.isArray(products) &&
                 products.map((product) => (
                   <option key={product.id}>{product.brand}</option>
@@ -115,7 +115,7 @@ const HeroSection = ({ setFilteredProducts }) => {
               onChange={handleFilterChange}
             >
               <option value=''>Price</option>
-              <option value='Featured'>Featured</option>
+              <option value=''>Featured</option>
               <option value='0-100'>₹0 - ₹1,000</option>
               <option value='100-200'>₹1,000 - ₹10,000</option>
               <option value='200-1000'>₹10,000 - ₹20,000</option>
@@ -129,7 +129,7 @@ const HeroSection = ({ setFilteredProducts }) => {
             className={Styles.SortBtn}
             onChange={handleSortChange}
           >
-            <option value='Featured'>Sort By : Featured</option>
+            <option value=''>Sort By : Featured</option>
             <option value='lowest'>Price: Lowest</option>
             <option value='highest'>Price: Highest</option>
             <option value='atoz'>Name:(A-Z)</option>

@@ -24,9 +24,9 @@ const Login = () => {
         'http://localhost:8080/api/v1/users/login',
         userData
       );
-      const data = response.data;
-      localStorage.setItem('user', JSON.stringify(data.acess_token));
-      // console.log(response);
+      const data = response.data.data;
+      // console.log(response.data.user.name);
+      localStorage.setItem('data', JSON.stringify(data));
       navigate('/');
     } catch (error) {
       console.error(error);
